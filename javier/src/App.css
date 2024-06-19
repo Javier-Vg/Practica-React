@@ -1,0 +1,10 @@
+.cont1{
+    display: grid;
+    text-align: center;
+    grid-template-columns: repeat(2,200px);
+    grid-template-rows: repeat(2,50px);
+}
+
+.h2m{
+    text-align: center;
+}
