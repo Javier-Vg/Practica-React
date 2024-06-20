@@ -2,12 +2,13 @@
 
 import { useState } from 'react'
 import './App.css'
-
+import { getUser } from './components/getUser'
+import { postUser } from './components/postUser'
 
 function App() { 
 
   let [correoRegister,setCorreoRegister]= useState()
-  let [correoContraLogin,setCorreoContraRegister]= useState()
+  let [correoContraRegister,setCorreoContraRegister]= useState()
   let [correoUsuario,setCorreoUsuario]= useState()
 
   let [correoLogin,setCorreoLogin]= useState()
@@ -15,17 +16,44 @@ function App() {
 
   let [LogReg,taste]= useState(nav)
 
-  let [msj,WelcomeMsj]= useState("Inicie sesion")
+  let [testeoLogin, setLog] = useState(0)
 
-  function cargarLogin() {
-    console.log(correoLogin)
-    console.log(correoLoginContra)
-    let array = [correoLogin,correoLoginContra]
-    localStorage.setItem("userActive",array ) 
-    return(
-        WelcomeMsj(msj = "Bienvenido")
+  let [msj,WelcomeMsj] = useState("Inicie sesion")
+
+  async function cargarLogin() {
+  
+    let usuarios = await getUser()
+    usuarios.forEach(email => {
+      if (email.correo == correoLogin && email.contra == correoLoginContra) {
+        alert("Se encontro el correo exitosamente")
+        localStorage.setItem("userActive",correoLogin )
+        setLog(testeoLogin = 0)
+
+
+
+
+
+
+
+
+
+
         
-    )
+
+
+        return(
+          <UsuarioPage recibimiento={correoLogin}/>
+        )
+      }else{
+        setLog(testeoLogin = 1)
+        console.log(("que"));
+      }
+    })
+
+     if (testeoLogin > 0) {
+       alert("Alguno de los dos datos fueron invalidados")
+     }
+    WelcomeMsj(msj = "Bienvenido")
   }
 
   function login() {
@@ -53,11 +81,14 @@ function App() {
   }
 
   function registros() {
+
     function cargarRegister() {
-  
-      let array = [correoRegister, correoContraLogin, correoUsuario];
-      localStorage.setItem("registros", array);
-      
+      let infoP = {
+        correo: correoRegister,
+        contra: correoContraRegister,
+        usuario: correoUsuario
+      }
+      postUser(infoP);
     }
 
     return (
@@ -72,7 +103,7 @@ function App() {
         <br/>
         <br/>
         <h2>Ingrese la contraseña para su nuevo correo:</h2>
-        <input id="contraRegister" type="text" value={correoContraLogin} onChange={(e)=>{setCorreoContraRegister( correoContraLogin = e.target.value)}} />
+        <input id="contraRegister" type="text" value={correoContraRegister} onChange={(e)=>{setCorreoContraRegister( correoContraRegister = e.target.value)}} />
         <br/>
         <br/>
         <button onClick={cargarRegister} id="btnRegisterEnvio">Registrarse</button>
@@ -82,14 +113,15 @@ function App() {
     )
   }
 
-
   function nav() {
     return(
+
       <div>
         <h1>Presione a su preferencia:</h1>
         <button onClick={UIRegister}>Registrase</button>
         <button onClick={UILogin}>Loguearse</button>
       </div>
+
     )
   }
 
@@ -114,12 +146,18 @@ function App() {
   return(
     LogReg
   )
-  
-
 }
 
+function UsuarioPage( {recibimiento} ) {
 
-export default App
+  <div>
+    <h1>Bienvenido {recibimiento}</h1>
+  </div>
+}
+
+export {App ,UsuarioPage}
+//export  {App, UsuarioPage}
+
 
 
 //  function targetInput(e) {
