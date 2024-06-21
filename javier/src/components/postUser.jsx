@@ -1,4 +1,4 @@
-export async function postUser( inf ) {
+async function postUser( inf ) {
     
     try {
         const response = await fetch('http://localhost:3000/api/task', {
@@ -14,3 +14,5 @@ export async function postUser( inf ) {
       console.log(error);
     }
 }
+
+export default postUser
