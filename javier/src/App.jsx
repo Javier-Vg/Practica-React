@@ -1,9 +1,13 @@
 //import {useState} from 'react';
-
 import { useState } from 'react'
+import { BrowserRouter as Router,Routes, Route } from "react-router-dom";
 import './App.css'
 import { getUser } from './components/getUser'
 import { postUser } from './components/postUser'
+import  Navbar  from "./components/Navbar";
+import  Home  from "./components/Home";
+import  Contact  from "./components/Contact";
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() { 
 
@@ -18,10 +22,8 @@ function App() {
 
   let [testeoLogin, setLog] = useState(0)
 
-  let [msj,WelcomeMsj] = useState("Inicie sesion")
 
   async function cargarLogin() {
-  
     let usuarios = await getUser()
     usuarios.forEach(email => {
       if (email.correo == correoLogin && email.contra == correoLoginContra) {
@@ -29,21 +31,6 @@ function App() {
         localStorage.setItem("userActive",correoLogin )
         setLog(testeoLogin = 0)
 
-
-
-
-
-
-
-
-
-
-        
-
-
-        return(
-          <UsuarioPage recibimiento={correoLogin}/>
-        )
       }else{
         setLog(testeoLogin = 1)
         console.log(("que"));
@@ -53,7 +40,6 @@ function App() {
      if (testeoLogin > 0) {
        alert("Alguno de los dos datos fueron invalidados")
      }
-    WelcomeMsj(msj = "Bienvenido")
   }
 
   function login() {
@@ -74,8 +60,7 @@ function App() {
             <br />
             <button onClick={navReturn}>Volver</button>
   
-            <div>{msj ? "Bienvenido usuario" : "Inicie sesion"}</div>
-            <div>{msj}</div>
+            
         </div>
     )
   }
@@ -144,18 +129,33 @@ function App() {
   }
 
   return(
-    LogReg
+    
+    <div>
+      {LogReg}
+      
+        <Router>
+          <Navbar/>
+            <Routes>
+              <Route path="/home" element={<Home/>}/>
+                <Route element = {<ProtectedRoute Activate={false}/>}>
+                  <Route path="/contact" element={<Contact/>}/>
+                </Route>
+          </Routes>
+        </Router>
+        
+
+    </div>
   )
 }
 
-function UsuarioPage( {recibimiento} ) {
+// function UsuarioPage( {recibimiento} ) {
 
-  <div>
-    <h1>Bienvenido {recibimiento}</h1>
-  </div>
-}
+//   <div>
+//     <h1>Bienvenido {recibimiento}</h1>
+//   </div>
+// }
 
-export {App ,UsuarioPage}
+export default App
 //export  {App, UsuarioPage}
 
 
