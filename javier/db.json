@@ -1,13 +1,43 @@
 {
   "users": [
     {
-      "id": 21,
+      "id": "21",
       "nombre": "Jonh Doe",
       "email": "john@exmple.com"
     },
     {
       "id": "232233",
       "task": "cocinar"
+    },
+    {
+      "id": "945e",
+      "correo": "kakakakaka",
+      "contra": "12",
+      "usuario": "Scoby do"
+    },
+    {
+      "id": "16ca",
+      "correo": "kakakakaka",
+      "contra": "12",
+      "usuario": "Scoby do"
+    },
+    {
+      "id": "4bc8",
+      "correo": "kakakakaka",
+      "contra": "12",
+      "usuario": "Scoby do"
+    },
+    {
+      "id": "cad5",
+      "correo": "Javier@gmail.com",
+      "contra": "12",
+      "usuario": "lol"
+    },
+    {
+      "id": "a735",
+      "correo": "vasitoconawa@gmial.com",
+      "contra": "12",
+      "usuario": "csssss"
     }
   ]
 }

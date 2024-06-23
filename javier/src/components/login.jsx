@@ -1,10 +1,10 @@
 
 import { getUser } from './getUser'
 import { useState } from 'react'
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
-
+    const navigate = useNavigate();
     let [testeoLogin, setLog] = useState(0)
     let [correoLogin,setCorreoLogin]= useState()
     let [correoLoginContra,setCorreoLoginContra]= useState()
@@ -31,11 +31,16 @@ function Login() {
         let usuarios = await getUser()
         usuarios.forEach(email => {
         if (email.correo == correoLogin && email.contra == correoLoginContra) {
-            alert("Se encontro el correo exitosamente");
+            alert("Cargando....");
             localStorage.setItem("userActive",correoLogin );
+            localStorage.setItem("userValid",true );
+            
             setLog(testeoLogin = 0);
 
-            return <Navigate to={"/contact"}/>
+            setTimeout(() => {
+                navigate("/usuario")
+            }, 2000);
+            
 
         }else{
             setLog(testeoLogin = 1)
