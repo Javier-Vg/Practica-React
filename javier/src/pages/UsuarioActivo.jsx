@@ -42,8 +42,6 @@ function UsuarioActivo() {
       setTimeout(() => {
         navigate("/")
       }, 1000);
-
-      return <h1>Cerrando sesion....</h1>
     }
     
   return(

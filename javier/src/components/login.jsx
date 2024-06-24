@@ -1,9 +1,10 @@
 
 import {getUser} from './getUser'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 
 function Login() {
+
     const navigate = useNavigate();
     let [testeoLogin, setLog] = useState(1)
     let [correoLogin,setCorreoLogin]= useState()
@@ -12,7 +13,11 @@ function Login() {
     //value={correoLogin} no esta funcionando, igual con los demas.
 
     return(
-      <div className='divL'>
+        <div className='divL'>
+            {/* <userContext.Provider value={userConfirm}>
+                {children}
+            </userContext.Provider> */}
+            
             <h2>Ingrese su correo:</h2>
             <input id="correoLogin" type="text" value={correoLogin} onChange={(e)=>{setCorreoLogin(correoLogin = e.target.value)}} />
             <br/>
@@ -41,6 +46,7 @@ function Login() {
                 setTimeout(() => {
                     navigate("/usuario")
                 }, 1300);
+
             }
         })
 
@@ -48,6 +54,8 @@ function Login() {
             alert("Alguno de los dos datos fueron invalidados")
         }
     }
+
+    
 }
 
 

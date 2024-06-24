@@ -10,8 +10,11 @@ import UsuarioActivo from './pages/UsuarioActivo'
 
 
 function App() {
+
+  // let user = useContext(userContext)
+  // console.log(user);
   
-  let userLogin = localStorage.getItem("userValid");
+  //let userLogin = localStorage.getItem("userValid");
 
   return(
     <div>
@@ -23,7 +26,7 @@ function App() {
           <Route path="/register" element={<Registros/>}/>
 
           {/* Esto hace que la pagina sea privada, mientras el prop tenga el valor "false" */}
-          <Route element = {<ProtectedRoute Activate={userLogin}/>}>
+          <Route element = {<ProtectedRoute />}>
             <Route path='/usuario' element = {<UsuarioActivo/>}/>
           </Route>
         </Route>
