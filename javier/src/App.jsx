@@ -3,19 +3,19 @@ import './App.css'
 //import PageLogin  from "../components/pageLogin";
 
 import Pages from "./components/Roots"
-import Login from './components/login'
+//import Login from './components/login'
 
 function App() {
+  
   return(
     <div>
       <Pages/>
-      <Login/>
-      <h1>Presione a su preferencia:</h1>
-      <button onClick={Login}>Registrase</button>
+      <h1>Registrarse:</h1>
       <button>Loguearse</button>
     </div>
   )
 }
+
 // function UsuarioPage( {recibimiento} ) {
 
 //   <div>

@@ -15,5 +15,4 @@ function Pages() {
     </Router>
   )
 }
-
 export default Pages

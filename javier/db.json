@@ -8,6 +8,24 @@
     {
       "id": "232233",
       "task": "cocinar"
+    },
+    {
+      "id": "0ae8",
+      "correo": "12",
+      "contra": "12",
+      "usuario": "javier"
+    },
+    {
+      "id": "a631",
+      "correo": "122",
+      "contra": "122",
+      "usuario": "ema"
+    },
+    {
+      "id": "a24b",
+      "correo": "122",
+      "contra": "1224343",
+      "usuario": "ema"
     }
   ]
 }
