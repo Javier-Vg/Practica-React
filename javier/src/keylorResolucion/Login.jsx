@@ -9,6 +9,7 @@ const Login = () => {
   const [loggedIn, setloggedIn] = useState(false);
   const userRef = createRef();
   const passRef = createRef();
+
   const validate = () => {
     const userInputTxt = userRef.current.value;
     const passInputTxt = passRef.current.value;
@@ -21,12 +22,14 @@ const Login = () => {
     } else {
       userInputClass.remove("error");
     }
+
     if (passInputTxt.trim() === "") {
       valid = false;
       passInputClass.add("error");
     } else {
       passInputClass.remove("error");
     }
+    
     return valid;
   }
 

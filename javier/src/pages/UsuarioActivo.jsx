@@ -1,13 +1,15 @@
-import {getUser} from "/src/components/getUser"
+
 import { useState,useEffect } from 'react'
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 function UsuarioActivo() {
+
+  const navigate = useNavigate();
 
     console.log("Como entraste aca?");
     const [users, setUsers] = useState([]);
     const [cargando, setLoading] = useState(true);
-    const [error, setError] = useState(null);
     const [valor, setValor] = useState();
 
     let usuarioActivo = localStorage.getItem("userActive")
@@ -19,20 +21,29 @@ function UsuarioActivo() {
             setLoading(false);
           })
           .catch(error => {
-            setError(error);
             setLoading(false);
+            console.log(error);
           });
     },[]);
 
     if (cargando) return <p>Loading...</p>;
-    if (error) return <p>Error: {error.message}</p>;
-
+    
     function SearchUser() {
         users.forEach(user => {
             if (user.correo == usuarioActivo) {
                 setValor(user.correo)
             } 
         })
+    }
+
+    function sesionClose() {
+      localStorage.removeItem("userActive")
+      localStorage.removeItem("userValid")
+      setTimeout(() => {
+        navigate("/")
+      }, 1000);
+
+      return <h1>Cerrando sesion....</h1>
     }
     
   return(
@@ -41,6 +52,7 @@ function UsuarioActivo() {
       <h1>Bienvenido</h1>
       <SearchUser/>
       {valor}
+      <button onClick={sesionClose}>Cerrar Sesion</button>
     </div>
     </>
   )

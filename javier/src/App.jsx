@@ -6,7 +6,6 @@ import Login from './components/login'
 import Registros from './components/register'
 import Page from './components/inicio'
 import MsgProtected from './components/MsgProtected'
-import Home from './components/Home'
 import UsuarioActivo from './pages/UsuarioActivo'
 
 
@@ -19,7 +18,6 @@ function App() {
       <h1>Rutas:</h1>
       <Routes>
         <Route path='/' element = {<Page/>}>
-          <Route path='/home' element = {<Home/>}/>
           <Route path='/login' element = {<Login/>}/>
           <Route path='/error' element = {<MsgProtected/>}/>
           <Route path="/register" element={<Registros/>}/>

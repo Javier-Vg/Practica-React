@@ -1,3 +1,4 @@
+
 async function getUser() {
 
     try {
