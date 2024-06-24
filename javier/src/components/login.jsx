@@ -1,11 +1,11 @@
 
-import { getUser } from './getUser'
+import {getUser} from './getUser'
 import { useState } from 'react'
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
-
-    let [testeoLogin, setLog] = useState(0)
+    const navigate = useNavigate();
+    let [testeoLogin, setLog] = useState(1)
     let [correoLogin,setCorreoLogin]= useState()
     let [correoLoginContra,setCorreoLoginContra]= useState()
 
@@ -29,21 +29,22 @@ function Login() {
 
     async function cargarLogin() {
         let usuarios = await getUser()
+        console.log(usuarios);
         usuarios.forEach(email => {
-        if (email.correo == correoLogin && email.contra == correoLoginContra) {
-            alert("Se encontro el correo exitosamente");
-            localStorage.setItem("userActive",correoLogin );
-            setLog(testeoLogin = 0);
+            if (email.correo == correoLogin && email.contra == correoLoginContra) {
+                alert("Cargando....");
+                localStorage.setItem("userActive",correoLogin );
+                localStorage.setItem("userValid",true );
+            
+                setLog(testeoLogin = 0);
 
-            return <Navigate to={"/contact"}/>
-
-        }else{
-            setLog(testeoLogin = 1)
-            console.log(("que"));
-        }
+                setTimeout(() => {
+                    navigate("/usuario")
+                }, 1300);
+            }
         })
 
-        if (testeoLogin > 0) {
+        if (testeoLogin != 0) {
             alert("Alguno de los dos datos fueron invalidados")
         }
     }

@@ -1,47 +1,37 @@
 import './App.css'
-//import { Navigate }  from "react-router-dom"
-//import PageLogin  from "../components/pageLogin";
+// {import  MsgProtected  from "../components/MsgProtected";}
+import { BrowserRouter as Router,Routes, Route } from "react-router-dom";
+import ProtectedRoute from './components/ProtectedRoute';
+import Login from './components/login'
+import Registros from './components/register'
+import Page from './components/inicio'
+import MsgProtected from './components/MsgProtected'
+import UsuarioActivo from './pages/UsuarioActivo'
 
-import Pages from "./components/Roots"
-//import Login from './components/login'
 
 function App() {
   
+  let userLogin = localStorage.getItem("userValid");
+
   return(
     <div>
-      <Pages/>
-      <h1>Registrarse:</h1>
-      <button>Loguearse</button>
+      <h1>Rutas:</h1>
+      <Routes>
+        <Route path='/' element = {<Page/>}>
+          <Route path='/login' element = {<Login/>}/>
+          <Route path='/error' element = {<MsgProtected/>}/>
+          <Route path="/register" element={<Registros/>}/>
+
+          {/* Esto hace que la pagina sea privada, mientras el prop tenga el valor "false" */}
+          <Route element = {<ProtectedRoute Activate={userLogin}/>}>
+            <Route path='/usuario' element = {<UsuarioActivo/>}/>
+          </Route>
+        </Route>
+      </Routes>
     </div>
   )
 }
 
-// function UsuarioPage( {recibimiento} ) {
-
-//   <div>
-//     <h1>Bienvenido {recibimiento}</h1>
-//   </div>
-// }
-
 export default App
-//export  {App, UsuarioPage}
 
-
-
-//  function targetInput(e) {
-  
-//    console.log(e.target.value);
-   
-   
-//  }
-
-// function status(statuss) {
-
-//   if (statuss.login) {
-//     <App estado = "Cerrar sesion" />
-    
-//    }
-// }
-
-// status(estado)
 

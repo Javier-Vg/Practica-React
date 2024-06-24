@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": 21,
+      "id": "21",
       "nombre": "Jonh Doe",
       "email": "john@exmple.com"
     },
@@ -10,22 +10,46 @@
       "task": "cocinar"
     },
     {
-      "id": "0ae8",
-      "correo": "12",
+      "id": "945e",
+      "correo": "kakakakaka",
       "contra": "12",
-      "usuario": "javier"
+      "usuario": "Scoby do"
     },
     {
-      "id": "a631",
-      "correo": "122",
-      "contra": "122",
-      "usuario": "ema"
+      "id": "16ca",
+      "correo": "kakakakaka",
+      "contra": "12",
+      "usuario": "Scoby do"
     },
     {
-      "id": "a24b",
-      "correo": "122",
-      "contra": "1224343",
-      "usuario": "ema"
+      "id": "4bc8",
+      "correo": "kakakakaka",
+      "contra": "12",
+      "usuario": "Scoby do"
+    },
+    {
+      "id": "cad5",
+      "correo": "Javier@gmail.com",
+      "contra": "12",
+      "usuario": "lol"
+    },
+    {
+      "id": "a735",
+      "correo": "vasitoconawa@gmial.com",
+      "contra": "12",
+      "usuario": "csssss"
+    },
+    {
+      "id": "092c",
+      "correo": "axaxaxxxaxa",
+      "contra": "12",
+      "usuario": "under"
+    },
+    {
+      "id": "0f56",
+      "correo": "xdxdxdxdxd22",
+      "contra": "12",
+      "usuario": "truenopa"
     }
   ]
 }

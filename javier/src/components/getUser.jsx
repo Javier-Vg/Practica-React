@@ -1,4 +1,5 @@
-export async function getUser() {
+
+async function getUser() {
 
     try {
       const response = await fetch('http://localhost:3001/users');
@@ -10,3 +11,5 @@ export async function getUser() {
       alert("Error");
     }
 }
+
+export { getUser}
